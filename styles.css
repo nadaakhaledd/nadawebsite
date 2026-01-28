@@ -40,3 +40,21 @@ h3 {
     justify-content: center;
     align-items: center;
 }
+
+.links {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.links a {
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.links a:hover {
+    color: #007bff;
+    transform: scale(1.2);
+}
