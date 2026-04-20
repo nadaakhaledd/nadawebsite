@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Nada Khaled - AI Engineer. Skills and recent work.">
+    <meta name="theme-color" content="#0b0b0c">
     <title>Nada Khaled</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <main class="page">
         <header class="topbar">
             <a class="brand" href="./index.html" aria-label="Home">Nada Khaled</a>
@@ -26,7 +28,7 @@
             </nav>
         </header>
 
-        <section class="hero" aria-label="Intro">
+        <section id="main-content" class="hero reveal" aria-label="Intro">
             <div class="hero-copy">
                 <p class="eyebrow">AI Engineer</p>
                 <h1 class="headline">Hi, I'm Nada.</h1>
@@ -43,7 +45,7 @@
             </div>
         </section>
 
-        <section id="skills" class="section" aria-label="Skills">
+        <section id="skills" class="section reveal" aria-label="Skills">
             <header class="section-head">
                 <h2>Skills</h2>
                 <p>Tools and technologies I use to ship.</p>
@@ -87,7 +89,7 @@
             </div>
         </section>
 
-        <section id="work" class="section" aria-label="Recent work">
+        <section id="work" class="section reveal" aria-label="Recent work">
             <header class="section-head">
                 <h2>Recent work</h2>
                 <p>Selected projects and experiments.</p>
@@ -135,7 +137,7 @@
             </div>
         </section>
 
-        <section id="links" class="section" aria-label="Links">
+        <section id="links" class="section reveal" aria-label="Links">
             <header class="section-head">
                 <h2>Links</h2>
                 <p>Find me online.</p>
@@ -171,10 +173,13 @@
             const topbar = document.querySelector('.topbar');
             const button = document.querySelector('.menu-btn');
             const nav = document.getElementById('primary-nav');
+            const navLinks = nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
+            const revealTargets = Array.from(document.querySelectorAll('.reveal'));
 
             if (!topbar || !button || !nav) return;
 
-            const isMobile = () => window.matchMedia('(max-width: 720px)').matches;
+            const mobileQuery = window.matchMedia('(max-width: 720px)');
+            const isMobile = () => mobileQuery.matches;
 
             const setOpen = (open) => {
                 topbar.dataset.menuOpen = open ? 'true' : 'false';
@@ -213,10 +218,58 @@
                 setOpen(false);
             });
 
-            window.addEventListener('resize', () => {
-                if (isMobile()) setOpen(false);
-                else setOpen(false);
-            });
+            const handleViewportChange = () => setOpen(false);
+            if (typeof mobileQuery.addEventListener === 'function') {
+                mobileQuery.addEventListener('change', handleViewportChange);
+            } else if (typeof mobileQuery.addListener === 'function') {
+                mobileQuery.addListener(handleViewportChange);
+            }
+
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver(
+                    (entries, observer) => {
+                        entries.forEach((entry) => {
+                            if (!entry.isIntersecting) return;
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        });
+                    },
+                    { rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+                );
+
+                revealTargets.forEach((section) => revealObserver.observe(section));
+            } else {
+                revealTargets.forEach((section) => section.classList.add('is-visible'));
+            }
+
+            if ('IntersectionObserver' in window && navLinks.length > 0) {
+                const sectionById = navLinks
+                    .map((link) => {
+                        const id = link.getAttribute('href');
+                        return id ? document.querySelector(id) : null;
+                    })
+                    .filter(Boolean);
+
+                const spyObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (!entry.isIntersecting) return;
+                            const id = entry.target.getAttribute('id');
+                            if (!id) return;
+
+                            navLinks.forEach((link) => {
+                                const active = link.getAttribute('href') === `#${id}`;
+                                if (active) link.setAttribute('aria-current', 'page');
+                                else link.removeAttribute('aria-current');
+                            });
+                        });
+                    },
+                    { threshold: 0.45, rootMargin: '-20% 0px -50% 0px' }
+                );
+
+                sectionById.forEach((section) => spyObserver.observe(section));
+            }
+
         })();
     </script>
 </body>
