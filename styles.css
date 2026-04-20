@@ -225,12 +225,30 @@ body {
 }
 
 .chips li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.78);
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 6px 10px;
     background: transparent;
+}
+
+.chips li i {
+    font-size: 14px;
+    line-height: 1;
+    opacity: 0.9;
+}
+
+.chips li i[class^="devicon-"],
+.chips li i[class*=" devicon-"] {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.chips li span {
+    line-height: 1;
 }
 
 .chips.small li {
@@ -312,9 +330,42 @@ button:focus-visible {
         justify-self: start;
     }
 
+    .avatar {
+        width: min(240px, 70vw);
+    }
+
     .section-head {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    #skills .grid,
+    #work .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .page {
+        gap: 22px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .topnav {
+        justify-content: flex-start;
+    }
+
+    .topnav a {
+        padding: 8px 10px;
+    }
+
+    .links {
+        grid-template-columns: 1fr;
     }
 }
 
