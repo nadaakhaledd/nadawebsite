@@ -3,31 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nada</title>
-    <link rel="stylesheet" href="./styles.css">
+    <meta name="description" content="Nada Khaled - AI Engineer. Skills and recent work.">
+    <title>Nada Khaled</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div class="info">
-        <div class="avatar">
-            <img src="./imgs/me.jpg" alt="Nada" width="150px">
-        </div>
-        <h1>Hello, There!</h1>
-        <h3>I'm Nada khaled <strong> AI Engineer </strong> and this my simple website.</h3>
-        <div class="links">
-            <a href="https://www.instagram.com/" title="Instagram" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://facebook.com" title="Facebook" target="_blank">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/nada-khaled-095775330/" title="LinkedIn" target="_blank">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://x.com/" title="X" target="_blank">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </div>
-    </div>
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="./index.html" aria-label="Home">Nada Khaled</a>
+            <nav class="topnav" aria-label="Primary">
+                <a href="#skills">Skills</a>
+                <a href="#work">Work</a>
+                <a href="#links">Links</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="Intro">
+            <div class="hero-copy">
+                <p class="eyebrow">AI Engineer</p>
+                <h1 class="headline">Hi, I'm Nada.</h1>
+                <p class="subhead">I build practical AI systems and clean, reliable software.</p>
+
+                <div class="actions">
+                    <a class="btn primary" href="mailto:example@email.com">Email</a>
+                    <a class="btn secondary" href="https://www.linkedin.com/in/nada-khaled-095775330/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="hero-photo" aria-label="Profile photo">
+                <img class="avatar" src="./imgs/me.jpg" alt="Portrait of Nada Khaled" width="320" height="320" decoding="async" fetchpriority="high">
+            </div>
+        </section>
+
+        <section id="skills" class="section" aria-label="Skills">
+            <header class="section-head">
+                <h2>Skills</h2>
+                <p>Tools and technologies I use to ship.</p>
+            </header>
+
+            <div class="grid">
+                <article class="panel">
+                    <h3>ML / AI</h3>
+                    <ul class="chips" aria-label="ML skills">
+                        <li>Python</li>
+                        <li>PyTorch</li>
+                        <li>TensorFlow</li>
+                        <li>LLMs</li>
+                        <li>NLP</li>
+                        <li>Computer Vision</li>
+                    </ul>
+                </article>
+
+                <article class="panel">
+                    <h3>Backend</h3>
+                    <ul class="chips" aria-label="Backend skills">
+                        <li>FastAPI</li>
+                        <li>Flask</li>
+                        <li>REST</li>
+                        <li>PostgreSQL</li>
+                        <li>Docker</li>
+                        <li>CI/CD</li>
+                    </ul>
+                </article>
+
+                <article class="panel">
+                    <h3>Frontend</h3>
+                    <ul class="chips" aria-label="Frontend skills">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Responsive UI</li>
+                        <li>Accessibility</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="work" class="section" aria-label="Recent work">
+            <header class="section-head">
+                <h2>Recent work</h2>
+                <p>Selected projects and experiments.</p>
+            </header>
+
+            <div class="grid work">
+                <article class="panel work-card">
+                    <div class="work-top">
+                        <h3>Project One</h3>
+                        <span class="muted">2026</span>
+                    </div>
+                    <p class="muted">Replace this with a real project: what you built, who it helped, and the outcome.</p>
+                    <ul class="chips small" aria-label="Project One tags">
+                        <li>LLM</li>
+                        <li>API</li>
+                        <li>Docker</li>
+                    </ul>
+                </article>
+
+                <article class="panel work-card">
+                    <div class="work-top">
+                        <h3>Project Two</h3>
+                        <span class="muted">2026</span>
+                    </div>
+                    <p class="muted">Replace this with a real project: what you built, who it helped, and the outcome.</p>
+                    <ul class="chips small" aria-label="Project Two tags">
+                        <li>Computer Vision</li>
+                        <li>PyTorch</li>
+                        <li>Inference</li>
+                    </ul>
+                </article>
+
+                <article class="panel work-card">
+                    <div class="work-top">
+                        <h3>Project Three</h3>
+                        <span class="muted">2025</span>
+                    </div>
+                    <p class="muted">Replace this with a real project: what you built, who it helped, and the outcome.</p>
+                    <ul class="chips small" aria-label="Project Three tags">
+                        <li>Data</li>
+                        <li>Automation</li>
+                        <li>Analytics</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="links" class="section" aria-label="Links">
+            <header class="section-head">
+                <h2>Links</h2>
+                <p>Find me online.</p>
+            </header>
+
+            <div class="links" aria-label="Social links">
+                <a href="https://www.instagram.com/" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://facebook.com" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.linkedin.com/in/nada-khaled-095775330/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://x.com/" title="X (Twitter)" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span>X</span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <small>© 2026 Nada Khaled</small>
+        </footer>
+    </main>
 </body>
 </html>
