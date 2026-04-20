@@ -15,6 +15,10 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 html {
     color-scheme: dark;
     scroll-behavior: smooth;
@@ -43,6 +47,27 @@ body {
     justify-content: space-between;
     gap: 12px;
     padding: 6px 0;
+}
+
+.menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.menu-btn:hover {
+    background: var(--surface);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-1px);
 }
 
 .brand {
@@ -322,6 +347,15 @@ button:focus-visible {
 }
 
 @media (max-width: 720px) {
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+    .menu-btn {
+        display: inline-flex;
+        margin-left: auto;
+    }
+
     .hero {
         grid-template-columns: 1fr;
     }
@@ -343,17 +377,34 @@ button:focus-visible {
     #work .grid {
         grid-template-columns: 1fr;
     }
+
+    .topnav {
+        flex-basis: 100%;
+        width: 100%;
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 10px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+    }
+
+    .topnav a {
+        border-radius: 12px;
+        padding: 10px 12px;
+        transform: none;
+    }
+
+    .topnav a:hover {
+        transform: none;
+    }
 }
 
 @media (max-width: 520px) {
     .page {
         gap: 22px;
-    }
-
-    .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
     }
 
     .topnav {

@@ -16,7 +16,10 @@
     <main class="page">
         <header class="topbar">
             <a class="brand" href="./index.html" aria-label="Home">Nada Khaled</a>
-            <nav class="topnav" aria-label="Primary">
+            <button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav">
+                Menu
+            </button>
+            <nav id="primary-nav" class="topnav" aria-label="Primary">
                 <a href="#skills">Skills</a>
                 <a href="#work">Work</a>
                 <a href="#links">Links</a>
@@ -162,5 +165,59 @@
             <small>© 2026 Nada Khaled</small>
         </footer>
     </main>
+
+    <script>
+        (() => {
+            const topbar = document.querySelector('.topbar');
+            const button = document.querySelector('.menu-btn');
+            const nav = document.getElementById('primary-nav');
+
+            if (!topbar || !button || !nav) return;
+
+            const isMobile = () => window.matchMedia('(max-width: 720px)').matches;
+
+            const setOpen = (open) => {
+                topbar.dataset.menuOpen = open ? 'true' : 'false';
+                button.setAttribute('aria-expanded', open ? 'true' : 'false');
+                button.textContent = open ? 'Close' : 'Menu';
+
+                if (isMobile()) {
+                    if (open) nav.removeAttribute('hidden');
+                    else nav.setAttribute('hidden', '');
+                } else {
+                    nav.removeAttribute('hidden');
+                }
+            };
+
+            setOpen(false);
+
+            button.addEventListener('click', () => {
+                const open = button.getAttribute('aria-expanded') !== 'true';
+                setOpen(open);
+            });
+
+            nav.addEventListener('click', (event) => {
+                if (!isMobile()) return;
+                if (event.target.closest('a')) setOpen(false);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (!isMobile()) return;
+                if (event.key === 'Escape') setOpen(false);
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!isMobile()) return;
+                if (button.getAttribute('aria-expanded') !== 'true') return;
+                if (event.target.closest('.menu-btn') || event.target.closest('#primary-nav')) return;
+                setOpen(false);
+            });
+
+            window.addEventListener('resize', () => {
+                if (isMobile()) setOpen(false);
+                else setOpen(false);
+            });
+        })();
+    </script>
 </body>
 </html>
